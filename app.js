@@ -179,12 +179,12 @@ function setupSurpriseButton() {
     
     surpriseBtn.addEventListener('click', function() {
         createConfettiExplosion();
-        
+
         // Change button text temporarily
         const originalText = surpriseBtn.textContent;
         surpriseBtn.textContent = 'Surprise! 🎊';
         surpriseBtn.style.transform = 'scale(1.2)';
-        
+
         setTimeout(() => {
             surpriseBtn.textContent = originalText;
             surpriseBtn.style.transform = 'scale(1)';
@@ -392,3 +392,126 @@ const cardBounceKeyframes = `
 const cardStyle = document.createElement('style');
 cardStyle.textContent = cardBounceKeyframes;
 document.head.appendChild(cardStyle);
+
+// --- LOVE FORTUNE WHEEL GAME ---
+const fortunes = [
+  "You get a forehead kiss! 💋",
+  "Tonight, you pick the movie for our romantic night in. 🎬",
+  "A love note is coming your way soon. 💌",
+  "Your smile melts my heart every time. 😍",
+  "Let's plan a fun adventure together soon! 🗺️",
+  "You get a big, warm hug! 🤗",
+  "You make my world magical. ✨",
+  "A surprise is coming for you... stay tuned! 🎁",
+];
+
+function drawWheel(ctx, segments, centerX, centerY, radius, rotation) {
+  const colors = ["#ffb6c1", "#e6e6fa", "#87ceeb", "#ffd700", "#ff69b4", "#98fb98", "#f08080", "#dda0dd"];
+  const angle = (2 * Math.PI) / segments.length;
+  for(let i=0; i<segments.length; i++){
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.arc(centerX, centerY, radius, angle * i + rotation, angle * (i+1) + rotation);
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.fill();
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(angle * (i + 0.5) + rotation);
+    ctx.textAlign = "right";
+    ctx.font = "bold 1rem Poppins, sans-serif";
+    ctx.fillStyle = "#4a4a4a";
+    ctx.fillText("💖 " + segments[i], radius - 24, 8);
+    ctx.restore();
+  }
+  // Draw center circle
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, 48, 0, 2 * Math.PI);
+  ctx.fillStyle = "#fff";
+  ctx.fill();
+
+  // Draw the pointer
+  ctx.save();
+  ctx.translate(centerX, centerY - radius + 12);
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(-18, -16);
+  ctx.lineTo(18, -16);
+  ctx.closePath();
+  ctx.fillStyle = "#e75480";
+  ctx.shadowColor = "#e75480";
+  ctx.shadowBlur = 10;
+  ctx.fill();
+  ctx.restore();
+}
+
+function showFortune(result) {
+  const modal = document.getElementById('fortuneModal');
+  const span = document.getElementById('fortuneResult');
+  if (!modal || !span) return;
+  span.innerText = result;
+  modal.classList.remove('hidden');
+}
+function hideFortune() {
+  const modal = document.getElementById('fortuneModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const canvas = document.getElementById('fortuneWheel');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let currentRotation = 0;
+  let spinning = false;
+
+  function renderWheel(rot = 0) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawWheel(ctx, fortunes, canvas.width/2, canvas.height/2, 130, rot);
+  }
+  renderWheel(currentRotation);
+
+  // Spin action
+  const spinBtn = document.getElementById('spinBtn');
+  if (spinBtn) {
+    spinBtn.addEventListener('click', function() {
+      if(spinning) return;
+      spinning = true;
+      let spins = Math.floor(Math.random()*2)+5; // 5-6 full spins
+      let fortuneIndex = Math.floor(Math.random()*fortunes.length);
+      let anglePer = (2*Math.PI) / fortunes.length;
+      let targetAngle = (2*Math.PI*spins) + (2*Math.PI - anglePer*fortuneIndex - anglePer/2);
+      let start = currentRotation;
+      let startTime = null;
+      function animateSpin(ts) {
+        if (!startTime) startTime = ts;
+        let elapsed = ts - startTime;
+        let duration = 2600;
+        // Ease-out cubic
+        let t = Math.min(elapsed/duration,1);
+        let ease = 1- Math.pow(1-t,3);
+        currentRotation = start + (targetAngle-start)*ease;
+        renderWheel(currentRotation);
+        if (t < 1) {
+          requestAnimationFrame(animateSpin);
+        } else {
+          currentRotation = targetAngle % (2*Math.PI);
+          renderWheel(currentRotation);
+          setTimeout(() => {
+            showFortune(fortunes[fortuneIndex]);
+            spinning = false;
+          }, 500);
+        }
+      }
+      requestAnimationFrame(animateSpin);
+    });
+  }
+  // Modal close
+  const closeBtn = document.getElementById('closeFortune');
+  if (closeBtn) closeBtn.addEventListener('click', hideFortune);
+  // Also close on modal background click
+  const fortuneModal = document.getElementById('fortuneModal');
+  if (fortuneModal) {
+    fortuneModal.addEventListener('click', function(e){
+      if(e.target === fortuneModal) hideFortune();
+    });
+  }
+});
