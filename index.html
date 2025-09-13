@@ -1,200 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hey Jahnavi, This is for You! 💖</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hey Jahnavi, This is for You! 💖</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Floating Background Elements -->
-    <div class="floating-elements">
-        <div class="heart">💖</div>
-        <div class="heart">💝</div>
-        <div class="balloon">🎈</div>
-        <div class="star">✨</div>
-        <div class="heart">💕</div>
-        <div class="balloon">🎈</div>
-        <div class="star">🌟</div>
-        <div class="heart">💖</div>
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="heart">💖</div>
+    <div class="heart">💝</div>
+    <div class="balloon">🎈</div>
+    <div class="star">✨</div>
+    <div class="heart">💕</div>
+    <div class="balloon">🎈</div>
+    <div class="star">🌟</div>
+    <div class="heart">💖</div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Hey Jahnavi, This is for You 💖</h1>
+      <div class="confetti-container" id="heroConfetti"></div>
     </div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Hey.. Jahnu, This is for You 💖</h1>
-            <div class="confetti-container" id="heroConfetti"></div>
+    <!-- LOVE FORTUNE WHEEL GAME -->
+    <div class="fortune-game">
+      <div class="wheel-container">
+        <canvas id="fortuneWheel" width="320" height="320"></canvas>
+        <button class="spin-btn" id="spinBtn">Spin the Wheel 💖</button>
+      </div>
+      <div class="fortune-modal hidden" id="fortuneModal">
+        <div class="fortune-modal-content">
+          <span id="fortuneResult"></span>
+          <button id="closeFortune" class="close-fortune-btn">Close</button>
         </div>
-        <!-- LOVE FORTUNE WHEEL GAME -->
-        <div class="fortune-game">
-          <div class="wheel-container">
-            <canvas id="fortuneWheel" width="320" height="320"></canvas>
-            <button class="spin-btn" id="spinBtn">Spin the Wheel 💖</button>
-          </div>
-          <div class="fortune-modal hidden" id="fortuneModal">
-            <div class="fortune-modal-content">
-              <span id="fortuneResult"></span>
-              <button id="closeFortune" class="close-fortune-btn">Close</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Jahnavi Section -->
+  <section class="about" id="about">
+    <div class="container about-2col">
+      <div class="about-gif-col">
+        <!-- Replace these GIFs with your own or use any cute GIF links -->
+        <img src="https://www.bing.com/th/id/OIP.wELM1YjUa1RWBK3S_0Xc5AHaEH?w=254&h=211&c=8&rs=1&qlt=70&o=7&cb=thws5&dpr=1.3&pid=3.1&rm=3" alt="Cute Smiling" class="about-cute-gif" />
+       <img src="https://www.bing.com/th/id/OGC.86cb03ad3133ccc3648dd6a8a0120b70?o=7&pid=1.7&rm=3&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2f96suQaNpBRyE%2fgiphy.gif&ehk=Ulz6HfrFBMOvUe3Hx8HtV22JfaF0Ce3tO0YZGPAgRF8%3d" alt="Cute Smiling" class="about-cute-gif" />
+        <img src="https://tse3.mm.bing.net/th/id/OIP.CMOfz7YxatDZ6bNWKdDolgHaNI?pid=ImgDet&w=169&h=299&c=7&dpr=1.3&o=7&rm=3" alt="Blushing" class="about-cute-gif" />
+        <img src="https://tse2.mm.bing.net/th/id/OIP.qqzVpWGVB_yd8XiuUTVMFAAAAA?pid=ImgDet&w=156&h=276&c=7&dpr=1.3&o=7&rm=3" alt="Hearts" class="about-cute-gif" />
+      
+    </div>
+      <div class="about-text-col">
+        <h2 class="section-title">About Our Amazing Jahnavi</h2>
+        <div class="about-text">
+          <p>There's something truly magical about you, Jahnavi! ✨</p>
+          <p>You light up every room you enter, making everyone around you happier and more alive. Your genuine kindness, infectious laughter, and beautiful soul create ripples of joy that touch everyone.</p>
+          <p>You're not just amazing - you're extraordinary in the most wonderful ways! 🌸</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons You're Amazing Section -->
+  <section class="reasons" id="reasons">
+    <div class="container">
+      <h2 class="section-title">Why You're Absolutely Amazing</h2>
+      <div class="reasons-grid">
+        <div class="reason-card" data-bg="lavender">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>Your smile lights up any room ✨</p>
+            </div>
+            <div class="card-back">
+              <p>Keep smiling, you’re my sunshine! ☀️</p>
             </div>
           </div>
         </div>
-    </section>
-
-    <!-- About Jahnavi Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">About Our Amazing Jahnavi</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>There's something truly magical about you, Jahnavi! ✨ You have this incredible ability to light up any room you walk into, and your presence alone makes everyone feel happier and more alive. Your genuine kindness, infectious laughter, and beautiful soul create ripples of joy that touch everyone around you. 🌈</p>
-                    <p>You're not just amazing - you're extraordinary in the most wonderful ways! 🌸</p>
-                </div>
-                <div class="flower-animation">
-                    <div class="flower">🌺</div>
-                    <div class="sparkles">
-                        <span class="sparkle">✨</span>
-                        <span class="sparkle">💫</span>
-                        <span class="sparkle">⭐</span>
-                        <span class="sparkle">✨</span>
-                    </div>
-                </div>
+        <div class="reason-card" data-bg="pink">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>You make ordinary moments magical 🌟</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Reasons You're Amazing Section -->
-    <section class="reasons" id="reasons">
-        <div class="container">
-            <h2 class="section-title">Why You're Absolutely Amazing</h2>
-            <div class="reasons-grid">
-                <div class="reason-card" data-bg="lavender">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>Your smile lights up any room ✨</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="pink">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>You make ordinary moments magical 🌟</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="skyblue">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>Your laugh is the best sound ever 😊</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="lavender">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>You have the kindest heart 💝</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="pink">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>You make everything better just by being you 🌈</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="skyblue">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>Your creativity inspires everyone around you 🎨</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="lavender">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>You bring joy wherever you go 🌸</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reason-card" data-bg="pink">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <p>Your positive energy is contagious 💫</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-back">
+              <p>With you, every day feels special. 💫</p>
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Moments & Memories</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span class="emoji">🏆</span>
-                    </div>
-                    <p class="gallery-caption">When you conquered that challenge</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span class="emoji">🎉</span>
-                    </div>
-                    <p class="gallery-caption">Your reaction to good news</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span class="emoji">🥰</span>
-                    </div>
-                    <p class="gallery-caption">Being absolutely adorable</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span class="emoji">😂</span>
-                    </div>
-                    <p class="gallery-caption">That time you made everyone laugh</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span class="emoji">🤔</span>
-                    </div>
-                    <p class="gallery-caption">Your thinking face</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span class="emoji">😊</span>
-                    </div>
-                    <p class="gallery-caption">Pure happiness captured</p>
-                </div>
+        <div class="reason-card" data-bg="skyblue">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>Your laugh is the best sound ever 😊</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Poem Section -->
-    <section class="poem" id="poem">
-        <div class="container">
-            <h2 class="section-title">A Little Poem for You</h2>
-            <div class="poem-container">
-                <div class="poem-text" id="poemText"></div>
-                <div class="cursor" id="cursor">|</div>
+            <div class="card-back">
+              <p>Promise to always make you laugh! 😂</p>
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Closing Section -->
-    <section class="closing" id="closing">
-        <div class="container">
-            <h1 class="closing-title">You Make the World Brighter, Jahnavi ✨</h1>
-            <button class="surprise-btn" id="surpriseBtn">Click for a Surprise! 🎉</button>
+        <div class="reason-card" data-bg="lavender">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>You have the kindest heart 💝</p>
+            </div>
+            <div class="card-back">
+              <p>Your kindness makes the world better. 🌍</p>
+            </div>
+          </div>
         </div>
-    </section>
+        <div class="reason-card" data-bg="pink">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>You make everything better just by being you 🌈</p>
+            </div>
+            <div class="card-back">
+              <p>You’re my rainbow after rain. 🌦️</p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card" data-bg="skyblue">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>Your creativity inspires everyone around you 🎨</p>
+            </div>
+            <div class="card-back">
+              <p>Never stop creating, my muse! 🖌️</p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card" data-bg="lavender">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>You bring joy wherever you go 🌸</p>
+            </div>
+            <div class="card-back">
+              <p>Joy follows you like a gentle breeze. 🍃</p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card" data-bg="pink">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>Your positive energy is contagious 💫</p>
+            </div>
+            <div class="card-back">
+              <p>Your vibe is pure magic. 🔮</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Confetti Container for Surprise -->
-    <div class="confetti-canvas" id="confettiCanvas"></div>
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">Moments & Memories</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="image-placeholder">
+            <span class="emoji">🏆</span>
+          </div>
+          <p class="gallery-caption">When you conquered that challenge</p>
+        </div>
+        <div class="gallery-item">
+          <div class="image-placeholder">
+            <span class="emoji">🎉</span>
+          </div>
+          <p class="gallery-caption">Your reaction to good news</p>
+        </div>
+        <div class="gallery-item">
+          <div class="image-placeholder">
+            <span class="emoji">🥰</span>
+          </div>
+          <p class="gallery-caption">Being absolutely adorable</p>
+        </div>
+        <div class="gallery-item">
+          <div class="image-placeholder">
+            <span class="emoji">😂</span>
+          </div>
+          <p class="gallery-caption">That time you made everyone laugh</p>
+        </div>
+        <div class="gallery-item">
+          <div class="image-placeholder">
+            <span class="emoji">🤔</span>
+          </div>
+          <p class="gallery-caption">Your thinking face</p>
+        </div>
+        <div class="gallery-item">
+          <div class="image-placeholder">
+            <span class="emoji">😊</span>
+          </div>
+          <p class="gallery-caption">Pure happiness captured</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="app.js"></script>
+  <!-- Poem Section -->
+  <section class="poem" id="poem">
+    <div class="container">
+      <h2 class="section-title">A Little Poem for You</h2>
+      <div class="poem-container">
+        <div class="poem-text" id="poemText"></div>
+        <div class="cursor" id="cursor"></div>
+        
+      </div>
+      <div class="flower-animation">
+        <div class="flower">🌺</div>
+        <div class="sparkles">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">💫</span>
+            <span class="sparkle">⭐</span>
+            <span class="sparkle">✨</span>
+        </div>
+    </div>
+  </section>
+
+  <!-- Closing Section -->
+  <section class="closing" id="closing">
+    <div class="container">
+      <h1 class="closing-title">You Make the World Brighter, Jahnavi ✨</h1>
+      <button class="surprise-btn" id="surpriseBtn">Click for a Surprise! 🎉</button>
+    </div>
+  </section>
+
+  <!-- Confetti Container for Surprise -->
+  <div class="confetti-canvas" id="confettiCanvas"></div>
+
+  <!-- Love Letter Modal -->
+  <div class="love-letter-modal hidden" id="loveLetterModal">
+    <div class="love-letter-content">
+      <button class="close-love-letter" id="closeLoveLetter">&times;</button>
+      <h2>💌 A Love Letter for You</h2>
+      <div class="love-letter-body">
+        <p>Dearest Jahnavi,</p>
+        <p>
+          Words can barely capture how grateful I am for you.<br>
+          Your smile fills my days with warmth, your laughter lights up my world, and your kindness inspires me to be better every single day.<br>
+          Thank you for being you, for bringing joy and magic into my life.<br>
+        </p>
+        <p>
+          I cherish every moment with you, and I can’t wait to make many more beautiful memories together.<br>
+          You are loved beyond measure. 💖
+        </p>
+        <p>
+          With all my love,<br>
+          Your secret admirer
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
