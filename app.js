@@ -1,4 +1,38 @@
 
+// Confetti effect
+function confetti() {
+    for (let i = 0; i < 80; i++) {
+        let piece = document.createElement("div");
+        piece.classList.add("confetti");
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 5000);
+    }
+}
+
+document.getElementById("surpriseBtn").addEventListener("click", () => {
+    confetti();
+    document.getElementById("gifBox").classList.remove("hidden");
+});
+
+// Confetti style from JS
+const style = document.createElement("style");
+style.innerHTML = `
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: hsl(${Math.random() * 360}, 80%, 60%);
+    top: -10px;
+    animation: fall linear forwards;
+}
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(360deg); }
+}
+`;
+document.head.appendChild(style);
 const fortunes = [
     { emoji: "💋", message: "If kisses were coding bugs, I'd never fix them—just keep them coming!" },
     { emoji: "🎬", message: "Let’s make a rom-com tonight: you bring the charm, I’ll bring the popcorn and awkward flirting." },
