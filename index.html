@@ -1,258 +1,206 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>B-Day Bash! | Interactive Cake</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be_Vietnam_Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "surface-tint": "#b30065",
-              "error": "#b41340",
-              "primary-dim": "#9d0058",
-              "outline": "#986885",
-              "surface-container": "#ffe0ef",
-              "error-container": "#f74b6d",
-              "primary-container": "#ff6ea9",
-              "inverse-surface": "#210219",
-              "primary-fixed-dim": "#ff4e9e",
-              "on-primary-container": "#4b0027",
-              "surface-container-low": "#ffecf4",
-              "outline-variant": "#d39ebd",
-              "on-primary-fixed-variant": "#5c0031",
-              "surface-bright": "#fff4f7",
-              "secondary-dim": "#005675",
-              "tertiary-fixed-dim": "#efc900",
-              "tertiary-container": "#ffd709",
-              "tertiary": "#6c5a00",
-              "on-tertiary-fixed-variant": "#665500",
-              "tertiary-dim": "#5e4e00",
-              "on-error-container": "#510017",
-              "surface-container-lowest": "#ffffff",
-              "on-secondary-container": "#004d69",
-              "on-secondary-fixed": "#00394f",
-              "on-primary": "#ffeff2",
-              "background": "#fff4f7",
-              "on-error": "#ffefef",
-              "surface-dim": "#ffc3e6",
-              "surface": "#fff4f7",
-              "surface-container-high": "#ffd8ec",
-              "secondary-container": "#9adaff",
-              "on-secondary": "#e7f5ff",
-              "on-background": "#47223b",
-              "on-tertiary-fixed": "#453900",
-              "tertiary-fixed": "#ffd709",
-              "primary": "#b30065",
-              "surface-container-highest": "#ffd0ea",
-              "secondary-fixed": "#9adaff",
-              "secondary-fixed-dim": "#71ceff",
-              "secondary": "#006386",
-              "primary-fixed": "#ff6ea9",
-              "inverse-primary": "#ff479c",
-              "on-tertiary-container": "#5b4b00",
-              "on-tertiary": "#fff2cd",
-              "surface-variant": "#ffd0ea",
-              "on-surface-variant": "#7a4e69",
-              "on-secondary-fixed-variant": "#005776",
-              "inverse-on-surface": "#c18eac",
-              "on-primary-fixed": "#000000",
-              "error-dim": "#a70138",
-              "on-surface": "#47223b"
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Samikshya's B-Day Bash!</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be_Vietnam_Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                colors: {
+                  "primary": "#b30065",
+                  "secondary": "#006386",
+                  "surface-container": "#ffe0ef",
+                  "tertiary": "#6c5a00",
+                },
+                fontFamily: {
+                  "headline": ["Plus Jakarta Sans"],
+                  "body": ["Be Vietnam Pro"],
+                },
+              },
             },
-            fontFamily: {
-              "headline": ["Plus Jakarta Sans"],
-              "body": ["Be Vietnam Pro"],
-              "label": ["Plus Jakarta Sans"]
-            },
-            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
-          },
-        },
-      }
+          }
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
-        }
+    <style>
         .perspective-1000 { perspective: 1000px; }
         .rotate-x-20 { transform: rotateX(20deg); }
         .cake-shadow { box-shadow: 0 20px 50px rgba(71, 34, 59, 0.15); }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 8s linear infinite; }
+        #panic-screen { display: none; }
     </style>
 </head>
-<body class="bg-background font-body text-on-background selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
-<!-- TopNavBar -->
-<header class="bg-pink-50/80 dark:bg-zinc-900/80 backdrop-blur-md fixed top-0 w-full z-50 px-6 py-4 shadow-xl shadow-pink-200/20 dark:shadow-none">
-<div class="flex justify-between items-center max-w-7xl mx-auto">
-<div class="text-2xl font-black text-pink-600 dark:text-pink-400 italic tracking-tighter font-['Plus_Jakarta_Sans']">B-Day Bash!</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-pink-400 dark:text-zinc-500 hover:text-pink-600 font-['Plus_Jakarta_Sans'] font-bold tracking-tight hover:scale-105 transition-transform duration-200 ease-out" href="#">Our Jokes</a>
-<a class="text-pink-400 dark:text-zinc-500 hover:text-pink-600 font-['Plus_Jakarta_Sans'] font-bold tracking-tight hover:scale-105 transition-transform duration-200 ease-out" href="#">Awards</a>
-<a class="text-pink-400 dark:text-zinc-500 hover:text-pink-600 font-['Plus_Jakarta_Sans'] font-bold tracking-tight hover:scale-105 transition-transform duration-200 ease-out" href="#">Guestbook</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-pink-600 dark:text-pink-400 hover:scale-105 transition-transform duration-200 ease-out" data-icon="redeem">redeem</button>
-<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-full font-bold hover:scale-105 active:scale-95 transition-all">Send Love</button>
-</div>
-</div>
-</header>
-<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-<!-- Hero Section -->
-<section class="text-center mb-16">
-<h1 class="font-headline font-extrabold text-6xl md:text-8xl tracking-tighter text-primary mb-4">
-                Make a <span class="text-secondary italic">Wish!</span>
-</h1>
-<p class="text-xl text-on-surface-variant max-w-2xl mx-auto">
-                Our digital kitchen has been working overtime. Tilt your screen, pick a flavor, and get ready to blow those candles into another dimension.
-            </p>
-</section>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<!-- Left Panel: Secret Flavors -->
-<div class="lg:col-span-3 flex flex-col gap-6 order-2 lg:order-1">
-<div class="bg-surface-container-low p-8 rounded-xl -rotate-2 hover:rotate-0 transition-transform duration-500">
-<h3 class="font-headline font-bold text-2xl text-primary mb-4">Secret Flavors</h3>
-<div class="space-y-4">
-<button class="w-full flex items-center justify-between p-4 bg-surface-container-highest rounded-lg group hover:bg-secondary-container transition-colors">
-<span class="font-bold">Glitter Grape</span>
-<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
-</button>
-<button class="w-full flex items-center justify-between p-4 bg-surface-container-highest rounded-lg group hover:bg-secondary-container transition-colors">
-<span class="font-bold">Chaos Cookie</span>
-<span class="material-symbols-outlined text-secondary" data-icon="cookie">cookie</span>
-</button>
-<button class="w-full flex items-center justify-between p-4 bg-surface-container-highest rounded-lg group hover:bg-secondary-container transition-colors">
-<span class="font-bold">Neon Velvet</span>
-<span class="material-symbols-outlined text-secondary" data-icon="palette">palette</span>
-</button>
-</div>
-</div>
-<div class="bg-tertiary-container p-6 rounded-xl rotate-3">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-tertiary" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
-<span class="font-headline font-bold uppercase tracking-widest text-xs text-on-tertiary-container">Pro Tip</span>
-</div>
-<p class="text-on-tertiary-container text-sm leading-relaxed">
-                        Hold your spacebar to gather extra "lung power" before releasing to extinguish the flames!
-                    </p>
-</div>
-</div>
-<!-- Center: The Kinetic Cake -->
-<div class="lg:col-span-6 order-1 lg:order-2">
-<div class="relative flex flex-col items-center justify-center min-h-[500px] perspective-1000">
-<!-- The Cake Illustration (CSS Based) -->
-<div class="relative w-72 h-72 transform rotate-x-20">
-<!-- Plate -->
-<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-20 bg-surface-container-highest rounded-full blur-[1px] cake-shadow"></div>
-<!-- Cake Body -->
-<div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-64 h-48 bg-primary rounded-[2rem] flex flex-col overflow-hidden">
-<div class="h-12 w-full bg-primary-container opacity-50"></div>
-<div class="flex-grow"></div>
-<div class="h-8 w-full bg-primary-dim"></div>
-</div>
-<!-- Icing Drips -->
-<div class="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-68 h-12 flex justify-around px-2">
-<div class="w-8 h-12 bg-primary-container rounded-full translate-y-2"></div>
-<div class="w-8 h-16 bg-primary-container rounded-full translate-y-4"></div>
-<div class="w-8 h-10 bg-primary-container rounded-full"></div>
-<div class="w-8 h-14 bg-primary-container rounded-full translate-y-3"></div>
-</div>
-<!-- Candles -->
-<div class="absolute -top-12 left-1/2 -translate-x-1/2 flex gap-6">
-<!-- Candle 1 -->
-<div class="relative flex flex-col items-center">
-<div class="w-3 h-4 bg-tertiary-container rounded-t-full -mb-1 z-10 animate-pulse"></div>
-<div class="w-4 h-24 bg-secondary-fixed rounded-full shadow-inner"></div>
-</div>
-<!-- Candle 2 (Active) -->
-<div class="relative flex flex-col items-center -mt-4">
-<div class="w-4 h-6 bg-tertiary-fixed rounded-full -mb-1 z-10 animate-bounce shadow-[0_0_20px_#efc900]"></div>
-<div class="w-4 h-28 bg-secondary-fixed-dim rounded-full shadow-inner"></div>
-</div>
-<!-- Candle 3 -->
-<div class="relative flex flex-col items-center">
-<div class="w-3 h-4 bg-tertiary-container rounded-t-full -mb-1 z-10 animate-pulse"></div>
-<div class="w-4 h-24 bg-secondary-fixed rounded-full shadow-inner"></div>
-</div>
-</div>
-</div>
-<!-- Interaction Zone -->
-<div class="mt-24 text-center">
-<button class="group relative px-12 py-5 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-black text-2xl rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all">
-                            BLOW OUT CANDLES
-                            <div class="absolute -top-4 -right-4 bg-tertiary text-on-tertiary p-2 rounded-full rotate-12 scale-75 group-hover:scale-100 transition-transform">
-<span class="material-symbols-outlined" data-icon="air">air</span>
-</div>
-</button>
-</div>
-</div>
-</div>
-<!-- Right Panel: Birthday Stats & Toppers -->
-<div class="lg:col-span-3 flex flex-col gap-6 order-3">
-<div class="bg-surface-container-high p-8 rounded-xl rotate-1">
-<h3 class="font-headline font-bold text-2xl text-primary mb-4 text-right">Topper Lab</h3>
-<div class="grid grid-cols-2 gap-3">
-<div class="aspect-square bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center p-2 text-center hover:bg-secondary-container transition-all cursor-pointer">
-<span class="material-symbols-outlined text-3xl mb-1" data-icon="star">star</span>
-<span class="text-[10px] uppercase font-bold">Sparkler</span>
-</div>
-<div class="aspect-square bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center p-2 text-center hover:bg-secondary-container transition-all cursor-pointer">
-<span class="material-symbols-outlined text-3xl mb-1" data-icon="pets">pets</span>
-<span class="text-[10px] uppercase font-bold">Paw Print</span>
-</div>
-<div class="aspect-square bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center p-2 text-center hover:bg-secondary-container transition-all cursor-pointer border-2 border-primary">
-<span class="material-symbols-outlined text-3xl mb-1 text-primary" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
-<span class="text-[10px] uppercase font-bold text-primary">Love</span>
-</div>
-<div class="aspect-square bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center p-2 text-center hover:bg-secondary-container transition-all cursor-pointer">
-<span class="material-symbols-outlined text-3xl mb-1" data-icon="celebration">celebration</span>
-<span class="text-[10px] uppercase font-bold">Confetti</span>
-</div>
-</div>
-</div>
-<!-- Bento Style Card -->
-<div class="bg-primary text-on-primary p-8 rounded-xl flex flex-col gap-4 -rotate-1">
-<div class="flex justify-between items-start">
-<span class="font-headline font-black text-4xl">12K</span>
-<span class="material-symbols-outlined opacity-50" data-icon="bar_chart">bar_chart</span>
-</div>
-<p class="font-body text-sm font-medium leading-snug">
-                        Calories of pure digital joy served on this platform today. Keep the energy high!
-                    </p>
-</div>
-<!-- Decor Image -->
-<div class="rounded-xl overflow-hidden shadow-lg -rotate-2">
-<img alt="Vibrant birthday background" class="w-full h-32 object-cover" data-alt="vibrant pink and yellow confetti explosion with soft blurred party lights and festive holiday celebration atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATxPDOkysgQLH1_WcovqoC6eraUlgWNrYTZS1L6uq2wXyNhcnbn6c4tQIFezTenMEev-7LXQqmJ1JPpXITNnycldTRE0Zxsq-1fJqOWgGWcAmlwGQEt-jzGPl3jCHQuK5HGNcdzIVhc6K_w6whQEgl4ArlTnzyQsOHijRk-DK9G5eY65S_-6X58HQU-CTnp5wHkNpug3HXQShInxnIrq-fX4XmHKOphlS08hZ8b4I7nPVxWelQBoFB-0AljrxqJ8flENmgQ2Y8yol-"/>
-</div>
-</div>
-</div>
-<!-- Sticky Floating Confetti Tags -->
-<div class="mt-20 flex flex-wrap gap-4 justify-center items-center">
-<span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-bold text-sm rotate-12">#BESTIEVIBES</span>
-<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-bold text-sm -rotate-6">#CAKEDAY</span>
-<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-bold text-sm rotate-3">#WISHGRANTED</span>
-<span class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full font-bold text-sm -rotate-12">#NONSTOPPARTY</span>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full rounded-t-[3rem] mt-20 pb-12 pt-16 px-10 bg-pink-100 dark:bg-zinc-900">
-<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
-<div class="font-black text-pink-700 dark:text-pink-300 text-xl font-headline tracking-tighter">B-Day Bash!</div>
-<div class="flex gap-10">
-<a class="font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest text-pink-400 opacity-70 hover:text-yellow-500 transition-colors" href="#">Privacy</a>
-<a class="font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest text-pink-400 opacity-70 hover:text-yellow-500 transition-colors" href="#">Terms</a>
-<a class="font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest text-pink-400 opacity-70 hover:text-yellow-500 transition-colors" href="#">Surprise Me</a>
-</div>
-<div class="font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest text-pink-600 dark:text-pink-400">
-                Made with chaotic bestie energy © 2024
-            </div>
-</div>
-</footer>
-</body></html>
+<body class="bg-[#fff4f7] font-body text-[#47223b] overflow-x-hidden">
 
+<div id="panic-screen" class="fixed inset-0 bg-white z-[9999] p-10 overflow-auto">
+    <h2 class="text-xl font-mono mb-4 text-gray-700">Project_Final_Data_Analysis_V2.xlsx</h2>
+    <table class="w-full border-collapse border border-gray-300 font-mono text-xs">
+        <tr class="bg-gray-100">
+            <th class="border border-gray-300 p-2">Index</th>
+            <th class="border border-gray-300 p-2">Variable_A</th>
+            <th class="border border-gray-300 p-2">Probability_Score</th>
+            <th class="border border-gray-300 p-2">Status</th>
+        </tr>
+        <tr><td class="border border-gray-300 p-2">1042</td><td class="border border-gray-300 p-2">0.882</td><td class="border border-gray-300 p-2">99.2%</td><td class="border border-gray-300 p-2 text-green-600">VALIDATED</td></tr>
+        <tr><td class="border border-gray-300 p-2">1043</td><td class="border border-gray-300 p-2">0.124</td><td class="border border-gray-300 p-2">14.5%</td><td class="border border-gray-300 p-2 text-red-600">PENDING</td></tr>
+    </table>
+    <button onclick="togglePanic()" class="mt-10 text-gray-400 hover:text-gray-600 underline">Close Worksheet</button>
+</div>
+
+<header class="bg-pink-50/80 backdrop-blur-md fixed top-0 w-full z-50 px-6 py-4 shadow-xl shadow-pink-200/20">
+    <div class="flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-2xl font-black text-pink-600 italic tracking-tighter font-headline">SAM-BASH! 2024</div>
+        <button onclick="togglePanic()" class="bg-red-500 text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-red-600 transition-all">PANIC BUTTON (MOM IS HERE)</button>
+    </div>
+</header>
+
+<main id="main-content" class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+    <section class="text-center mb-16">
+        <h1 class="font-headline font-extrabold text-6xl md:text-8xl tracking-tighter text-primary mb-4">
+            Happy B-Day <span class="text-secondary italic">Samikshya!</span>
+        </h1>
+        <p id="mood-text" class="text-xl text-gray-600 max-w-2xl mx-auto italic">
+            "The legend who definitely didn't start the fire (probably)."
+        </p>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <div class="lg:col-span-3 flex flex-col gap-6">
+            <div class="bg-pink-100 p-8 rounded-xl -rotate-2 hover:rotate-0 transition-all">
+                <h3 class="font-headline font-bold text-2xl text-primary mb-4">Aura Selection</h3>
+                <div class="space-y-4">
+                    <button onclick="changeFlavor('bg-primary', 'Main Character Energy')" class="w-full flex items-center justify-between p-4 bg-white rounded-lg hover:bg-pink-300 transition-all shadow-sm">
+                        <span class="font-bold">Princess Pink</span>
+                        <span class="material-symbols-outlined text-pink-600">star</span>
+                    </button>
+                    <button onclick="changeFlavor('bg-orange-500', 'Chaotic Vibes')" class="w-full flex items-center justify-between p-4 bg-white rounded-lg hover:bg-orange-200 transition-all shadow-sm">
+                        <span class="font-bold">3AM Chaos Orange</span>
+                        <span class="material-symbols-outlined text-orange-600">bolt</span>
+                    </button>
+                    <button onclick="changeFlavor('bg-purple-600', 'Napping Forever')" class="w-full flex items-center justify-between p-4 bg-white rounded-lg hover:bg-purple-200 transition-all shadow-sm">
+                        <span class="font-bold">Sleepy Purple</span>
+                        <span class="material-symbols-outlined text-purple-600">bedtime</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-6">
+            <div class="relative flex flex-col items-center justify-center min-h-[450px] perspective-1000">
+                <div class="relative w-72 h-72 transform rotate-x-20">
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-20 bg-pink-200 rounded-full blur-[1px] cake-shadow opacity-50"></div>
+                    <div id="cake-main" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-64 h-48 bg-primary rounded-[2rem] flex flex-col overflow-hidden transition-all duration-700">
+                        <div class="h-12 w-full bg-white/20"></div>
+                        <div class="flex-grow"></div>
+                        <div class="h-8 w-full bg-black/10"></div>
+                    </div>
+                    <div class="absolute -top-12 left-1/2 -translate-x-1/2 flex gap-6">
+                        <div class="relative flex flex-col items-center">
+                            <div class="flame w-3 h-4 bg-yellow-300 rounded-t-full -mb-1 z-10 animate-pulse"></div>
+                            <div class="w-4 h-24 bg-blue-200 rounded-full shadow-inner"></div>
+                        </div>
+                        <div class="relative flex flex-col items-center -mt-4">
+                            <div class="flame w-4 h-6 bg-yellow-400 rounded-full -mb-1 z-10 animate-bounce shadow-[0_0_20px_#efc900]"></div>
+                            <div class="w-4 h-28 bg-blue-300 rounded-full shadow-inner"></div>
+                        </div>
+                        <div class="relative flex flex-col items-center">
+                            <div class="flame w-3 h-4 bg-yellow-300 rounded-t-full -mb-1 z-10 animate-pulse"></div>
+                            <div class="w-4 h-24 bg-blue-200 rounded-full shadow-inner"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-24 text-center">
+                    <button id="blow-btn" onclick="blowCandles()" class="group relative px-12 py-5 bg-gradient-to-r from-primary to-pink-500 text-white font-headline font-black text-2xl rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all">
+                        BLOW OUT CANDLES
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-3 flex flex-col gap-6">
+            <div class="bg-white/50 p-6 rounded-xl border-2 border-dashed border-primary/30 group shadow-lg">
+                <h3 class="font-headline font-bold text-xl text-primary mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined animate-spin-slow">auto_awesome</span>
+                    Hype Machine
+                </h3>
+                <div id="compliment-display" class="min-h-[100px] flex items-center justify-center text-center p-4 bg-white rounded-lg shadow-inner mb-4 italic text-sm font-medium">
+                    "Click to reveal the truth about Samikshya..."
+                </div>
+                <button onclick="generateCompliment()" class="w-full py-3 bg-secondary text-white rounded-full font-bold hover:opacity-90 transition-all active:scale-95 shadow-lg">
+                    GIVE ME HYPE
+                </button>
+            </div>
+
+            <div class="bg-primary text-white p-8 rounded-xl -rotate-1 shadow-lg">
+                <div class="flex justify-between items-start">
+                    <span class="font-headline font-black text-4xl">99%</span>
+                    <span class="material-symbols-outlined opacity-50">favorite</span>
+                </div>
+                <p class="text-sm font-medium leading-snug">
+                    Chances of Samikshya forgetting her phone while literally holding it.
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const compliments = [
+        "Samikshya's winged eyeliner could actually slice through the haters. 🔪✨",
+        "If being iconic was a crime, she'd be serving a life sentence. ⚖️👑",
+        "She’s the funniest person in the room without even trying. 😂🙌",
+        "Samikshya doesn't need a GPS because she IS the destination. 📍💅",
+        "10/10 looks even with 0/10 brain cells left at 3 AM. 🧠🚫",
+        "Her laugh is the soundtrack to my favorite memories. 🎶💖",
+        "50% Sweetheart, 50% Chaos, 100% Legend. 🌪️🍭",
+        "She'd find the best lighting for a selfie during the apocalypse. 🤳🔥"
+    ];
+
+    function changeFlavor(colorClass, mood) {
+        document.getElementById('cake-main').className = `absolute bottom-6 left-1/2 -translate-x-1/2 w-64 h-48 rounded-[2rem] flex flex-col overflow-hidden transition-all duration-700 ${colorClass}`;
+        document.getElementById('mood-text').innerText = `Samikshya has entered: ${mood}!`;
+    }
+
+    function generateCompliment() {
+        const display = document.getElementById('compliment-display');
+        display.classList.add('animate-bounce');
+        const randomComp = compliments[Math.floor(Math.random() * compliments.length)];
+        setTimeout(() => {
+            display.innerText = randomComp;
+            display.classList.remove('animate-bounce');
+        }, 300);
+    }
+
+    function blowCandles() {
+        const flames = document.querySelectorAll('.flame');
+        flames.forEach(f => {
+            f.classList.remove('bg-yellow-300', 'bg-yellow-400', 'animate-pulse', 'animate-bounce', 'shadow-[0_0_20px_#efc900]');
+            f.classList.add('bg-gray-300');
+            f.style.height = '4px';
+        });
+        const btn = document.getElementById('blow-btn');
+        btn.innerText = "WISH GRANTED! 🎂";
+        btn.classList.replace('from-primary', 'from-green-500');
+        alert("Happy Birthday Samikshya! Keep being the chaotic main character you were born to be! 💖✨");
+    }
+
+    function togglePanic() {
+        const panic = document.getElementById('panic-screen');
+        const main = document.getElementById('main-content');
+        if (panic.style.display === 'block') {
+            panic.style.display = 'none';
+            main.style.opacity = '1';
+        } else {
+            panic.style.display = 'block';
+            main.style.opacity = '0';
+        }
+    }
+</script>
+</body>
+</html>
