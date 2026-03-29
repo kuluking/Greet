@@ -7,52 +7,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Floating Balloons -->
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+
     <!-- Hero Section -->
     <section id="hero">
-        <h1>Happy Birthday Samikshya!</h1>
-        <p>Today we celebrate you and all the joy you bring!</p>
+        <h1>Happy Birthday, Samikshya! 🎉</h1>
+        <p>Congratulations on surviving another year of my nonsense 😆</p>
     </section>
-    
+
     <!-- Fun Roasts Section -->
     <section id="roasts">
-        <h2>Fun Roasts</h2>
+        <h2>Fun Roasts 🤭</h2>
         <ul>
-            <li>You're not getting older, just more distinguished!</li>
-            <li>Remember, age is just a number... in your case, it's a pretty high one!</li>
-            <li>You're like a fine wine – getting better with age... or at least that's what we're telling ourselves!</li>
+            <li>Professional overthinker.</li>
+            <li>CEO of ordering food and then complaining about it.</li>
+            <li>Award‑winning late texter.</li>
+            <li>Certified drama starter (but in a fun way).</li>
         </ul>
     </section>
-    
-    <!-- Memory Gallery Section -->
+
+    <!-- Memory Gallery -->
     <section id="gallery">
-        <h2>Memory Gallery</h2>
-        <img src="memory1.jpg" alt="Memory 1">
-        <img src="memory2.jpg" alt="Memory 2">
-        <img src="memory3.jpg" alt="Memory 3">
+        <h2>Memory Gallery 📸</h2>
+        <div class="grid">
+            <img src="memory1.jpg" alt="Memory 1">
+            <img src="memory2.jpg" alt="Memory 2">
+            <img src="memory3.jpg" alt="Memory 3">
+        </div>
     </section>
-    
-    <!-- Birthday Message Section -->
+
+    <!-- Birthday Message -->
     <section id="message">
-        <h2>Birthday Message</h2>
-        <p>Wishing you all the happiness and love today and always!</p>
+        <h2>Birthday Message 💛</h2>
+        <p>
+            You’re one of the best humans in my life.  
+            Thanks for laughing at my terrible jokes and being the chaos partner  
+            I never asked for but absolutely needed.  
+        </p>
     </section>
-    
-    <!-- Surprise Button Section -->
+
+    <!-- Surprise Button -->
     <section id="surprise">
-        <button onclick="showConfetti()">Surprise!</button>
+        <button id="surpriseBtn">Click for a surprise 🎁</button>
+        <div id="gifBox" class="hidden">
+            <img src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif" alt="Funny Surprise">
+        </div>
     </section>
-    
-    <!-- Footer Section -->
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Birthday Celebration for Samikshya</p>
+        Built with love, sarcasm, and zero coding skills 💖
     </footer>
-    
-    <script>
-        function showConfetti() {
-            // Confetti animation logic here
-            alert('Surprise! 🎉');
-            // More advanced confetti animation can be added here
-        }
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
